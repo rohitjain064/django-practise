@@ -4,6 +4,7 @@ from.forms import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib import auth
+from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def home(request):
@@ -59,3 +60,15 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return render(request,'login.html')
+
+
+def search(request):
+    if request.method=="POST":
+        srch=request.POST['srh']
+        if srch:
+            match=Student.objects.filter(Q(name__icontains=srch)| Q(city__icontains=srch) | Q(email_id__icontains=srch))
+            if match:
+                return  render(request,'search.html',{'sr':match})
+            else:
+                return HttpResponseRedirect('/search/')
+    return render(request,'search.html')

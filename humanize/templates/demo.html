@@ -1,0 +1,22 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>humanize</title>
+</head>
+<body>
+<h1> humanize</h1>
+<h2> spell: {{ first|apnumber }}</h2>
+<h2> spell: {{ second|intword }}</h2>
+<h2> spell: {{ second|intcomma }}</h2>
+<h2> spell: {{ fourth|ordinal }}</h2>
+<h2> now : {{ now|naturalday }}</h2>
+<h2> other_date : {{ other_date|naturalday }}</h2>
+<h2>future : {{ future|naturaltime }}</h2>
+<h2>past : {{ past|naturaltime }}</h2>
+
+
+
+</body>
+</html>
